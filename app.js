@@ -38,7 +38,7 @@ app.locals.moment = moment; // create local variable available for the applicati
 
 //passport configuration
 app.use(session({
-  secret: "Test",
+  secret: process.env.SESSIONSECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -64,4 +64,6 @@ app.use("/bbqplaces/:id/comments", commentRoute);
 app.use("/users", userRoute);
 app.use("/", passwordRoute);
 
-app.listen(3000, () => console.log("The YelpBBQ Server Has Started!"));
+port = 3000 || 
+
+app.listen(process.env.PORT, process.env.IP, () => console.log("The YelpBBQ Server Has Started!"));
