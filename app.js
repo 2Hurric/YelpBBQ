@@ -64,6 +64,5 @@ app.use("/bbqplaces/:id/comments", commentRoute);
 app.use("/users", userRoute);
 app.use("/", passwordRoute);
 
-port = 3000 || 
 
 app.listen(process.env.PORT, process.env.IP, () => console.log("The YelpBBQ Server Has Started!"));
