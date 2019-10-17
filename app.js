@@ -19,8 +19,14 @@ const indexRoute      = require("./routes/index"),
       passwordRoute   = require("./routes/password");
 
 // connect to the DB
-let url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v13"; // fallback in case global var not working
-mongoose.connect(url, {useMongoClient: true});
+let url = "mongodb+srv://guest314:guest314@yelpbbq-yvlf1.mongodb.net/test?retryWrites=true&w=majority"; // fallback in case global var not working
+let localurl = "mongodb://localhost/yelpbbq"
+
+// , {
+//     useNewUrlParser: true,
+//     useCreateIndex: true
+// }
+mongoose.connect(url);
 
 app.set("view engine", "ejs");
 app.use(helmet());

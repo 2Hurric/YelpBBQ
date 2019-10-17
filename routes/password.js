@@ -39,14 +39,14 @@ router.post("/password_reset", (req, res, next) => {
       let smtpTransport = nodemailer.createTransport({
         service: "Gmail",
         auth: {
-          user: "webdevtestonly@gmail.com",
+          user: "",
           pass: process.env.PASSWORD
         }
       });
       let mailOptions = {
-        from: "webdevtestonly@gmail.com",
+        from: "",
         to: user.email,
-        subject: "Reset your YelpCamp Password",
+        subject: "Reset your YelpBBQ Password",
         text: "Hi " + user.firstName + ",\n\n" +
               "We've received a request to reset your password. If you didn't make the request, just ignore this email. Otherwise, you can reset your password using this link:\n\n" +
               "https://" + req.headers.host + "/reset/" + token + "\n\n" +
