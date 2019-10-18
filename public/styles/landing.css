@@ -67,22 +67,22 @@ body {
 }
 
 .slideshow li:nth-child(1) { 
-  background-image: url(https://res.cloudinary.com/yelpcampcloud/image/upload/c_scale,dpr_auto,f_auto,q_auto,w_auto/v1513517509/K3mPv14_epb3ia.jpg) 
+  background-image: url(https://i.imgur.com/VqZmwoq.jpg) 
 }
 .slideshow li:nth-child(2) { 
-  background-image: url(https://res.cloudinary.com/yelpcampcloud/image/upload/c_scale,dpr_auto,f_auto,q_auto,w_auto/v1513517629/SBEmFpv_vd8gp6.jpg);
+  background-image: url(https://i.imgur.com/BZmn41Q.jpg);
   animation-delay: 10s; 
 }
 .slideshow li:nth-child(3) { 
-  background-image: url(https://res.cloudinary.com/yelpcampcloud/image/upload/c_scale,dpr_auto,f_auto,q_auto,w_auto/v1513517702/emvhOnb_qaqdwq.jpg);
+  background-image: url(https://imgur.com/f4hjMDY.jpg);
   animation-delay: 20s; 
 }
 .slideshow li:nth-child(4) { 
-  background-image: url(https://res.cloudinary.com/yelpcampcloud/image/upload/c_scale,dpr_auto,f_auto,q_auto,w_auto/v1513519375/2LSMCmJ_gpvxnl.jpg);
+  background-image: url(https://imgur.com/6JSVP6S.jpg);
   animation-delay: 30s; 
 }
 .slideshow li:nth-child(5) { 
-  background-image: url(https://res.cloudinary.com/yelpcampcloud/image/upload/c_scale,dpr_auto,f_auto,q_auto,w_auto/v1513519484/TVGe0Ef_el9ecd.jpg);
+  background-image: url(https://imgur.com/QlGFTwO.jpg);
   animation-delay: 40s; 
 }
 
