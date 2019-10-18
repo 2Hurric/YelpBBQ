@@ -6,8 +6,9 @@
 
 To see the app in action, go to [https://calm-depths-02705.herokuapp.com/](https://calm-depths-02705.herokuapp.com/)
 
-Username:  guest
-Password: guest
+- Username:  guest
+
+- Password: guest
 
 ## Features
 * Authentication:
