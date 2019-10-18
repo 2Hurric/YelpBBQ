@@ -13,20 +13,27 @@ const express        = require("express"),
 
 // requiring routes     
 const indexRoute      = require("./routes/index"),
-      bbqplaceRoute = require("./routes/bbqplaces"),
+      bbqplaceRoute   = require("./routes/bbqplaces"),
       commentRoute    = require("./routes/comments"),
       userRoute       = require("./routes/user"),
       passwordRoute   = require("./routes/password");
 
-// connect to the DB
-let url = "mongodb+srv://guest314:guest314@yelpbbq-yvlf1.mongodb.net/test?retryWrites=true&w=majority"; // fallback in case global var not working
-let localurl = "mongodb://localhost/yelpbbq"
+require('dotenv').config();
 
-// , {
-//     useNewUrlParser: true,
-//     useCreateIndex: true
-// }
-mongoose.connect(url);
+// connect to the DB
+//let url = process.env.DATABASEURL; // fallback in case global var not working
+//let url = "mongodb+srv://guest314:guest314@yelpbbq-yvlf1.mongodb.net/test?retryWrites=true&w=majority"
+//let localurl = "mongodb://localhost/yelpbbq"
+
+
+
+mongoose.connect("mongodb+srv://guest314:guest314@yelpbbq-yvlf1.mongodb.net/test?retryWrites=true&w=majority", {
+  useNewUrlParser: true,
+  useCreateIndex: true
+}).then(() => {
+  console.log("Connected to DB");
+}).catch(err => console.log(`Database connection error: ${err.message}`));
+
 
 app.set("view engine", "ejs");
 app.use(helmet());
@@ -37,6 +44,7 @@ app.use(flash());
 app.locals.moment = moment; // create local variable available for the application
 
 //passport configuration
+//process.env.SESSIONSECRET
 app.use(session({
   secret: process.env.SESSIONSECRET,
   resave: false,
@@ -66,3 +74,5 @@ app.use("/", passwordRoute);
 
 
 app.listen(process.env.PORT, process.env.IP, () => console.log("The YelpBBQ Server Has Started!"));
+//Local debug
+//app.listen(3000, () => console.log("The YelpBBQ Server Has Started!"));

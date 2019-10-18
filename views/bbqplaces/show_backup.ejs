@@ -26,7 +26,6 @@
         <% } %>
       </div>
     </div>
-
     <div class="well">
       <div class="text-right">
         <a class="btn btn-success btn-sm pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
@@ -61,8 +60,7 @@
       <hr>
       <!--Check if there are comments-->
       <% if (campground.comments.length === 0) { %>
-        <em style="color: grey;">No comments yet.</em>
-        
+        <em style="color: grey;">No comments yet. Say something about this campground!</em>
       <% } %>
       <% campground.comments.forEach(comment => { %>
         <div class="row">

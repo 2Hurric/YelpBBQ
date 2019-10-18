@@ -2,9 +2,20 @@ const express    = require("express"),
       router     = express.Router(),
       Campground = require("../models/campground"),
       middleware = require("../middleware"), // automatically looks for index.js
-      geocoder   = require("geocoder"),
+      NGeocoder   = require("node-geocoder"),
       multer     = require('multer'),
       cloudinary = require('cloudinary');
+
+require('dotenv').config();
+
+//options for Node-Geocode
+var options = {
+  provider: 'google',
+  apiKey: process.env.GEOCODERAPI
+};
+
+var geocoder = NGeocoder(options);
+
 
 // =========== Image Upload Configuration =============
 //multer config
@@ -22,12 +33,12 @@ const imageFilter = (req, file, cb) => {
 };
 const upload = multer({ storage: storage, fileFilter: imageFilter});
 
-// cloudinary config
-// cloudinary.config({ 
-//   cloud_name: 'yelpcampcloud', 
-//   api_key: 584718626928737, 
-//   api_secret: process.env.APISECRET
-// });
+//cloudinary config
+cloudinary.config({ 
+  cloud_name: 'dtynctaes', 
+  api_key: 915584243224162, 
+  api_secret: "1MR4Vi6uC-cPhrmKwmFuWMrydMg"
+});
 
 // ============= ROUTES ==============
 // Define escapeRegex function to avoid regex DDoS attack
@@ -83,9 +94,10 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), (req, res) => {
     // geocoder for Google Maps
     geocoder.geocode(req.body.location, (err, data) => {
       if (err) throw err;
-      let lat = data.results[0].geometry.location.lat,
-          lng = data.results[0].geometry.location.lng,
-          location = data.results[0].formatted_address;
+      //console.log(data);
+      let lat = data[0].latitude,
+          lng = data[0].longitude,
+          location = data[0].formattedAddress;
       let newCampground = { name, image, price, description, author, location, lat, lng };
     
       // create a new bbqplace and save to DB
@@ -151,9 +163,9 @@ router.put("/:id", middleware.checkCampgroundOwenership, upload.single('image'),
     };
     geocoder.geocode(req.body.campground.location, (err, data) => {
       if (err) throw err;
-      let lat = data.results[0].geometry.location.lat,
-          lng = data.results[0].geometry.location.lng,
-          location = data.results[0].formatted_address;
+      let lat = data[0].latitude,
+          lng = data[0].longitude,
+          location = data[0].formattedAddress;
       let newData = { name, image, price, description, author, location, lat, lng };
       
       //find and update the correct bbqplace
@@ -193,9 +205,9 @@ router.put("/:id", middleware.checkCampgroundOwenership, upload.single('image'),
       
       geocoder.geocode(req.body.campground.location, (err, data) => {
         if (err) throw err;
-        let lat = data.results[0].geometry.location.lat,
-            lng = data.results[0].geometry.location.lng,
-            location = data.results[0].formatted_address;
+        let lat = data[0].latitude,
+            lng = data[0].longitude,
+            location = data[0].formattedAddress;
         let newData = { name, image, price, description, author, location, lat, lng };
         
         //find and update the correct bbqplace
